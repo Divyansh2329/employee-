@@ -1,3 +1,4 @@
+
 -- MySQL dump 10.13  Distrib 5.7.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: Employee
@@ -26,13 +27,13 @@ CREATE TABLE `address` (
   `emp_id` varchar(20) DEFAULT NULL,
   `house_no` decimal(5,0) NOT NULL,
   `street` char(20) DEFAULT NULL,
-  `city_id` varchar(20) DEFAULT NULL,
-  `state_id` varchar(20) DEFAULT NULL,
-  `country_id` varchar(20) DEFAULT NULL,
-  `pincode` decimal(6,0) DEFAULT NULL,
-  `permanentaddress` varchar(20) DEFAULT NULL,
-  `currentaddress` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`house_no`),
+  `city_id` int DEFAULT NULL,
+  `state_id` int DEFAULT NULL,
+  `country_id` int DEFAULT NULL,
+  `pincode` int DEFAULT NULL,
+  `permanentaddress` varchar(100) DEFAULT NULL,
+  `currentaddress` varchar(100) DEFAULT NULL,
+ 
   KEY `emp_id` (`emp_id`),
   CONSTRAINT `address_ibfk_1` FOREIGN KEY (`emp_id`) REFERENCES `employee` (`emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -60,9 +61,9 @@ CREATE TABLE `departmental_information` (
   `name` char(20) DEFAULT NULL,
   `description` char(10) DEFAULT NULL,
   `parent_dept_id` varchar(20) DEFAULT NULL,
-  `total_emp_count` decimal(9,0) DEFAULT NULL,
-  `current_emp_count` decimal(9,0) DEFAULT NULL,
-  PRIMARY KEY (`dept_id`)
+  `total_emp_count` int DEFAULT NULL,
+  `current_emp_count` int DEFAULT NULL,
+  PRIMARY KEY (`dept_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -118,9 +119,9 @@ CREATE TABLE `employee` (
   `name` char(30) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
-  `phone` decimal(10,0) DEFAULT NULL,
-  `pan_no` decimal(10,0) DEFAULT NULL,
-  `aadhar_no` decimal(15,0) DEFAULT NULL,
+  `phone` int DEFAULT NULL,
+  `pan_no` varchar(12) DEFAULT NULL,
+  `aadhar_no` int DEFAULT NULL,
   `joining_date` date DEFAULT NULL,
   `leave_date` date DEFAULT NULL,
   `dept_id` varchar(15) DEFAULT NULL,
@@ -181,8 +182,8 @@ CREATE TABLE `salary_information` (
   `emp_id` varchar(20) DEFAULT NULL,
   `basic` varchar(20) DEFAULT NULL,
   `rent` decimal(9,0) DEFAULT NULL,
-  `edu_allow` char(20) DEFAULT NULL,
-  `tele_allow` char(20) DEFAULT NULL,
+  `edu_allow` decimal(10,0) DEFAULT NULL,
+  `tele_allow` decimal(10,0) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   PRIMARY KEY (`sal_id`),
